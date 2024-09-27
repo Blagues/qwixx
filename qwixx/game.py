@@ -54,7 +54,7 @@ class Scoreboard:
         if action.color == Color.GREEN:
             return action.n < min(self.green, default=13)
         if action.color == Color.BLUE:
-            return action.n < min(self.green, default=13)
+            return action.n < min(self.blue, default=13)
         return False
 
     def move(self, action: Action):
@@ -156,7 +156,8 @@ class Qwixx:
 
 def compete(agent1, agent2, n_games: int = 1000):
     wins = draws = losses = 0
-    for i in tqdm(range(n_games), desc='Actively competing!'):
+    # for i in tqdm(range(n_games), desc='Actively competing!'):
+    for i in range(n_games):
         if i % 2 == 0:
             score = Qwixx([agent1, agent2]).play()
             if score[0] > score[1]:
